@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/artiste")
+ * @Route("/admin/artiste")
  */
 class ArtisteController extends AbstractController
 {

@@ -5,14 +5,22 @@
 {% block body %}
 <h1>Home</h1>
 
+{% for message in app.flashes('danger') %}
+<div class="alert alert-danger">
+    {{ message }}
+</div>
+{% endfor %}
 <h2 class="py-5">Nos 5 derniers Artistes</h2>
+
 
 
 <div class="d-flex flex-wrap justify-content-around">
     {% for artiste in artistes %}
         <div>
-            <img src="{{ asset('images/artiste/' ~ artiste.imageName) | imagine_filter('poster') }}" alt="">
-            <p>{{artiste.firstname}} {{artiste.lastname | upper }}</p>
+            <a href="{{path('front_artiste', {'id' : artiste.id})}}">
+                <img src="{{ asset('images/artiste/' ~ artiste.imageName) | imagine_filter('poster') }}" alt="">
+                <p>{{artiste.firstname}} {{artiste.lastname | upper }}</p>
+            </a>
         </div>
     {% endfor %}
 </div>
@@ -22,8 +30,10 @@
 <div class="d-flex flex-wrap justify-content-around">
     {% for movie in movies %}
         <div>
-            <img src="{{ asset('images/movies/' ~ movie.imageNAme) | imagine_filter('poster')}}" alt="">
-            <p>{{movie.title}}</p>
+            <a href="{{path('front_movie', {'id' : movie.id})}}">
+                <img src="{{ asset('images/movies/' ~ movie.imageNAme) | imagine_filter('poster')}}" alt="">
+                <p>{{movie.title}}</p>
+            </a>
         </div>
     {% endfor %}
 </div>

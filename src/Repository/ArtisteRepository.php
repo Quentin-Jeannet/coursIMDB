@@ -54,6 +54,17 @@ class ArtisteRepository extends ServiceEntityRepository
         ->getResult();
     }
 
+    public function search($search)
+    {
+        return $this->createQueryBuilder('a')
+        ->where('a.firstname like :search')
+        ->orWhere('a.lastname like :search')
+        ->setParameter('search', '%'.$search.'%')
+        ->getQuery()
+        ->getResult()
+        ;
+    }
+
     // /**
     //  * @return Artiste[] Returns an array of Artiste objects
     //  */

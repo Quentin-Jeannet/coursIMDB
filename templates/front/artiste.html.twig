@@ -1,0 +1,47 @@
+{% extends "base.html.twig" %}
+{% block body %}
+    <h2 class="py-5">
+        {{artiste.firstname}} {{artiste.lastname}}
+    </h2>
+
+    <div class="d-flex justify-content-center">
+        <img src="{{asset('images/artiste/' ~ artiste.imageName ) | imagine_filter('poster')}}" alt="">
+    </div>
+
+    {% if artiste.moviesAsReal|length > 0 %}
+    <h3 class="py-5">
+        Films en tant que réalisateur
+    </h3>
+    
+    <div class="d-flex flex-wrap justify-content-around">
+        {% for movie in artiste.moviesAsReal %}
+            <div>
+                <a href="{{path('front_movie', {'id' : movie.id})}}">
+                    <img src="{{asset('images/movies/' ~ movie.imageName)  | imagine_filter('poster')}}" alt="">
+                    <p>{{movie.title}}</p>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+
+    {% if artiste.movies|length > 0 %}
+    <h3 class="py-5">
+        Films en tant qu'acteur
+    </h3>
+    <div class="d-flex flex-wrap justify-content-around">
+        {% for movie in artiste.movies %}
+            <div>
+                <a href="{{path('front_movie', {'id' : movie.id})}}">
+                    <img src="{{asset('images/movies/' ~ movie.imageName)  | imagine_filter('poster')}}" alt="">
+                    <p>{{movie.title}}</p>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+
+
+{% endblock %}

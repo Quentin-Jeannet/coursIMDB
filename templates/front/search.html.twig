@@ -1,0 +1,35 @@
+{% extends "base.html.twig" %}
+{% block body %}
+<h1 class="py-5">Resultats de la recherche</h1>
+
+{% if movies | length > 0 %}
+<h2 class="py-5">
+    Nos films trouvés
+</h2>
+
+
+<div class="d-flex flex-wrap justify-content-around">
+    {% for movie in movies %}
+    <div>
+        <img src="{{asset('images/movies/' ~ movie.imageName ) | imagine_filter('poster')}}" alt="">
+        <p>{{movie.title}}</p>
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+
+{% if artistes|length > 0 %}
+<h2 class="py-5">
+    Nos artistes trouvés
+</h2>
+
+<div class="d-flex flex-wrap justify-content-around">
+    {% for artiste in artistes %}
+    <div>
+        <img src="{{asset('images/artiste/' ~artiste.imageName) | imagine_filter('poster')}}" alt="">
+        <p>{{artiste.firstname}} {{artiste.lastname}}</p>
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+{% endblock %}
