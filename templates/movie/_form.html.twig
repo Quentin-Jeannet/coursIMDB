@@ -1,0 +1,44 @@
+<div class="container">
+    {{ form_start(form) }}
+        
+    <div class="d-flex flex-wrap">
+        <div class="col-12 col-md-6">
+            {{form_label(form.title)}}
+            {{form_widget(form.title)}}
+        </div>
+    </div>
+    <div class="d-flex flex-wrap">
+        <div class="col-12">
+            {{form_row(form.description)}}
+        </div>
+    </div>
+    <div class="d-flex flex-wrap justify-content-center">
+        <div class="col-8">
+            {{form_row(form.datesortie)}}
+        </div>
+    </div>
+    <div class="d-flex justify-content-center">
+        <div class="col-8">
+            {{form_row(form.imageFile)}}
+        </div>
+    </div>
+
+    <div>
+        {{form_label(form.actors)}}
+        <div class="d-flex flex-wrap">
+            {% for actor in form.actors %}
+            <div class="me-2">
+                {{form_widget(actor)}}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div>
+        {{form_row(form.realistor)}}
+    </div>
+
+
+        <button class="btn btn-success">{{ button_label|default('Enregistrer') }}</button>
+    {{ form_end(form) }}
+</div>

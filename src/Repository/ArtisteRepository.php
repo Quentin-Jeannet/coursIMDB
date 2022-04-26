@@ -45,6 +45,15 @@ class ArtisteRepository extends ServiceEntityRepository
         }
     }
 
+    public function  findLastFive()
+    {
+        return $this->createQueryBuilder('a')
+        ->orderBy('a.id', 'DESC')
+        ->setMaxResults(5)
+        ->getQuery()
+        ->getResult();
+    }
+
     // /**
     //  * @return Artiste[] Returns an array of Artiste objects
     //  */

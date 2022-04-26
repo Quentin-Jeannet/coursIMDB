@@ -45,6 +45,15 @@ class MovieRepository extends ServiceEntityRepository
         }
     }
 
+    public function findLastFive()
+    {
+        return $this->createQueryBuilder('m')
+        ->orderBy('m.id', 'DESC')
+        ->setMaxResults(5)
+        ->getQuery()
+        ->getResult();
+    }
+
     // /**
     //  * @return Movie[] Returns an array of Movie objects
     //  */

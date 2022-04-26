@@ -72,6 +72,11 @@ class Artiste
         $this->moviesAsReal = new ArrayCollection();
     }
 
+    public function __toString()
+    {
+        return $this->getFirstname() . ' ' . $this->getLastname(); 
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -118,7 +123,7 @@ class Artiste
         return $this->imageName;
     }
 
-    public function setImageName(string $imageName): self
+    public function setImageName(?string $imageName): self
     {
         $this->imageName = $imageName;
 

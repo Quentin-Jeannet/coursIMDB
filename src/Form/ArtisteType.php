@@ -5,10 +5,10 @@ namespace App\Form;
 use App\Entity\Artiste;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Vich\UploaderBundle\Form\Type\VichImageType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class ArtisteType extends AbstractType
 {
@@ -29,8 +29,7 @@ class ArtisteType extends AbstractType
             ])
             ->add('birthdate', DateType::class, [
                 'label' => 'Date de naissance',
-                'attr' => [
-                ]
+                'years' => range(1900,2022),
             ])
             ->add('imageFile' ,VichImageType::class, [
                 'required' => false,

@@ -5,9 +5,9 @@ namespace App\Controller;
 use App\Entity\Artiste;
 use App\Form\ArtisteType;
 use App\Repository\ArtisteRepository;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -31,6 +31,7 @@ class ArtisteController extends AbstractController
     public function new(Request $request, ArtisteRepository $artisteRepository): Response
     {
         $artiste = new Artiste();
+
         $form = $this->createForm(ArtisteType::class, $artiste);
         $form->handleRequest($request);
 

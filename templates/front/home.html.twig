@@ -1,0 +1,31 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+<h1>Home</h1>
+
+<h2 class="py-5">Nos 5 derniers Artistes</h2>
+
+
+<div class="d-flex flex-wrap justify-content-around">
+    {% for artiste in artistes %}
+        <div>
+            <img src="{{ asset('images/artiste/' ~ artiste.imageName) | imagine_filter('poster') }}" alt="">
+            <p>{{artiste.firstname}} {{artiste.lastname | upper }}</p>
+        </div>
+    {% endfor %}
+</div>
+
+<h2 class="py-5">Nos 5 derniers Films</h2>
+
+<div class="d-flex flex-wrap justify-content-around">
+    {% for movie in movies %}
+        <div>
+            <img src="{{ asset('images/movies/' ~ movie.imageNAme) | imagine_filter('poster')}}" alt="">
+            <p>{{movie.title}}</p>
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

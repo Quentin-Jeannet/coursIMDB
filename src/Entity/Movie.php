@@ -43,7 +43,7 @@ class Movie
      */
     private $imageName;
 
-    /*
+    /**
     * NOTE: This is not a mapped field of entity metadata, just a simple property.
     * 
     * @Vich\UploadableField(mapping="movies", fileNameProperty="imageName")
@@ -118,7 +118,7 @@ class Movie
         return $this->imageName;
     }
 
-    public function setImageName(string $imageName): self
+    public function setImageName(?string $imageName): self
     {
         $this->imageName = $imageName;
 

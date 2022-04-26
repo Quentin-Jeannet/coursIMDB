@@ -20,6 +20,7 @@ class ArtisteFixture extends Fixture
         $artiste->setImageName('clint.jpg');
 
         $manager->persist($artiste);
+        $manager->flush();
 
         $artiste = new Artiste();
         $artiste->setLastname('Cooper');
